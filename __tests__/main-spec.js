@@ -1,4 +1,4 @@
-const {countProducts,fetchProduct,generateReceipt,countTotalPriceInput,assmble} = require('../main');
+const {countProducts,fetchProduct,generateReceipt,countTotalPriceInput,assmble,generateReceipts} = require('../main');
 
 it ('should count products', () => {
     //given 
@@ -49,6 +49,15 @@ it ('should generate receipt items', () => {
     const totalPrice = 10;
     //when 
     let receipts = assmble(totalPrice, productsInfo);
+    console.log(receipts);
+    
+})
+
+it ('should generate receipt items', () => {
+    //given
+    const codes = ['0001','0002','0001'];
+    //when 
+    let receipts = generateReceipts(codes);
     console.log(receipts);
     
 })

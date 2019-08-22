@@ -72,12 +72,19 @@ function countTotalPriceInput(productsInfo) {
 }
 
 function assmble(totalPrice, productsInfo) {
-    let str = "Receipts\n------------\n";
+    let str = "Receipts\n------------------------\n";
     productsInfo.forEach(element => {
-        str += element.name + "        " + element.count + "        " + element.price + "\n";
+        str += element.name + "\t" + element.count + "\t" + element.price + "\n";
     });
-    str += "------------\nPrice:  " + totalPrice;
+    str += "------------------------\nPrice:  " + totalPrice;
     return str;
+}
+
+function generateReceipts(codes) {
+    let receiptItems = generateReceipt(codes);
+    let totalPrice = countTotalPriceInput(receiptItems);
+    let result = assmble(totalPrice, receiptItems);
+    return result;
 }
 
 // function countOneProduct(code, codes) {
@@ -95,5 +102,6 @@ module.exports = {
     fetchProduct,
     generateReceipt,
     countTotalPriceInput,
-    assmble
+    assmble,
+    generateReceipts
 };
